@@ -1,0 +1,28 @@
+<div class="container form_center">
+  <div class="row">
+    <form #loginFrom="ngForm" (ngSubmit)="onSubmit(f)">
+      <div class="row" style="margin-top:50%">
+        <div class="col-sm-6 col-lg-offset-3">
+          <div class="form-group">
+            <div class="alert alert-danger" *ngIf="!loginStatus">Invalid Credentials.</div>
+            <mat-form-field>
+              <input [(ngModel)]="user.email" name="email" matInput placeholder="Email" [formControl]="emailFormControl" [errorStateMatcher]="matcher" required>
+              <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                Please enter a valid email address
+              </mat-error>
+              <mat-error *ngIf="emailFormControl.hasError('required')">
+                Email is
+                <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input [(ngModel)]="user.password" name="password" matInput placeholder="Enter Password" type="password" required>
+            </mat-form-field>
+            <button mat-raised-button color="primary" type="submit"
+            [disabled]="!loginFrom.valid" style="margin-left:38%">Submit</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

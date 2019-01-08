@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+/* @import '~@angular/material/prebuilt-themes/deeppurple-amber.css'; */
+
+.site-header .navbar-header {
+    float: inherit;
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.site-header .navbar-brand {
+    float: inherit;
+    margin-left: 0;
+}
+
+.site-header .navbar-nav {
+    display: block;
+    float: inherit;
+    text-align: center;
+}
+
+.site-header .navbar-nav>li {
+    float: none;
+    display: inline-block;
+}
+
+.form_center{
+    width:40%;
+    /* background-image: url('./assets/images/registration.jpg');
+    background-repeat: no-repeat; */
+}
+
+.submit {
+   
+}
