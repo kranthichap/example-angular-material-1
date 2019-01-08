@@ -1,0 +1,11 @@
+.module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
+  .controller('MyCtrl', function DemoCtrl($matDialog) {
+  this.sampleAction = function(name, ev) {
+      $mdDialog.show($matDialog.alert()
+        .title(name)
+        .textContent('You clicked on"' + name + '"')
+        .ok('OK')
+        .targetEvent(ev)
+      );
+    };
+  });

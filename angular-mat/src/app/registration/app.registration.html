@@ -1,0 +1,100 @@
+
+<div class="container form_center">
+  <div class="row">
+    <form class="" #regForm="ngForm" (ngSubmit)="onSubmit(f)">
+      <div class="form-group row">
+        <div class="col-sm-6">
+          <!-- <label for="firstname">First Name:</label>
+          <input class="form-control" type="text" name="name" [(ngModel)]="user.firstName" required/> -->
+          <mat-form-field>
+            <input [(ngModel)]="user.firstName" name="firstName" matInput placeholder="Enter First Name" required>
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-6">
+          <!-- <label for="lastname">Last Name:</label>
+          <input class="form-control" type="text" name="name" [(ngModel)]="user.lastName" required/> -->
+          <mat-form-field>
+            <input [(ngModel)]="user.lastName" name="lastName" matInput placeholder="Enter Last Name" required>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <!-- <label for="email">Email:</label>
+        <input class="form-control" type="email" name="email" [(ngModel)]="user.email" required/> -->
+        <mat-form-field>
+          <input [(ngModel)]="user.email" name="email" matInput placeholder="Email" [formControl]="emailFormControl" [errorStateMatcher]="matcher" (blur)="checkMail();">
+          <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('required')">
+            Email is
+            <strong>required</strong>
+          </mat-error>
+          <!-- <mat-error *ngIf="userNameStatus">
+            Email has been already registerd
+          </mat-error> -->
+        </mat-form-field>
+        <p class="text-danger" *ngIf="userNameStatus">
+            Email has been already registerd
+        </p>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-6">
+          <!-- <label for="password">Password:</label>
+        <input class="form-control" type="text" name="password" [(ngModel)]="user.password" required/> -->
+          <mat-form-field>
+            <input [(ngModel)]="user.password" name="password" matInput placeholder="Enter Password" required>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+          <!-- <label for="confirmpassword">Confirm Password:</label>
+        <input class="form-control" type="password" name="confirmPassword" [(ngModel)]="user.confirmPassword" required/> -->
+          <mat-form-field>
+            <input [(ngModel)]="user.confirmPassword" name="confirm password" matInput placeholder="Confirm Password" required>
+          </mat-form-field>
+        </div>
+
+      </div>
+
+      <!-- <ng-container *ngFor="let gender of genders;">
+        <label>
+          <input type="radio" name="gender" [value]="gender" [(ngModel)]="user.gender" required />{{ gender }}
+        </label>
+      </ng-container> -->
+
+      <div [formGroup]="gender">
+        <mat-radio-group formControlName="myGender">
+          <ng-container *ngFor="let gender of genders;">
+            <mat-radio-button (click)="setGender(gender)">{{ gender }}</mat-radio-button>
+          </ng-container>
+        </mat-radio-group>
+      </div>  
+
+      <div>
+        <mat-form-field>
+          <input matInput [matDatepicker]="dp" [(ngModel)]="user.dob" placeholder="Enter DOB" [formControl]="date">
+          <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+          <mat-datepicker #dp></mat-datepicker>
+        </mat-form-field>
+      </div>
+      
+      <div>&nbsp;</div>
+
+      <div>
+        <mat-checkbox [(ngModel)]='user.isTCAccepted' name="tc" required> Accept Terms & Conditions.</mat-checkbox>
+      </div>
+      <!-- <div class="form-group">
+        <input type="checkbox" style="position:inline" required/> Accept Terms & Conditions.
+      </div> -->
+
+      <div class="form-group">
+        <button mat-raised-button color="primary" class="pull-right" type="submit" [disabled]="!regForm.valid && userNameStatus">Submit</button>
+      </div>
+
+    </form>
+  </div>
+</div>
+<!-- <p textBlink>Blink Text</p> -->

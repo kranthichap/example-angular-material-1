@@ -1,0 +1,14 @@
+<app-header></app-header>
+<mat-toolbar color="primary">
+    <button mat-button routerLink="/">
+        <mat-icon>home</mat-icon>
+    </button>
+
+    <!-- This fills the remaining space of the current row -->
+    <span class="fill-remaining-space"></span>
+    <div>
+        <button mat-button routerLink="/registration" routerLinkActive="active">Register</button>
+        <button mat-button routerLink="/login" routerLinkActive="active">Login</button>
+        <button mat-button routerLink="/list" routerLinkActive="active">List</button>
+    </div>
+</mat-toolbar>
